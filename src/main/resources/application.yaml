@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: interview
+  datasource:
+    url: jdbc:mysql://localhost:3306/exampledb
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    user: root
+    baseline-description: init
+    baseline-version: 1
+    url: jdbc:mysql://localhost:3306/exampledb
+    password: 123456
+
+security:
+  jwt:
+    secret-key: uHKUUDCdgxciF1ThESvOpbFR5oW9PJIGEG04FGA5xeykhNXMVxzIRCfgk1rK9mE8K6IWpHcL7iWBge91M5hzo4APHoV866PjHao3XvrgOFmMHecssVXToaVqXthK0uKMgP8CRxENqB8bxOAlEiT15eDOPmi12YeI3NGP7fPETUmtu8KvvFVVuCKXyUIaozHW44uS8BiLYXomJlLcKaIZKoF7mjfikOSs9saEujbEcbxwXMYn8ZY333F0tfN7gvTj
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
