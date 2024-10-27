@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id           BIGSERIAL PRIMARY KEY,
     name         VARCHAR(255),
     password     VARCHAR(255),
     role         VARCHAR(255),

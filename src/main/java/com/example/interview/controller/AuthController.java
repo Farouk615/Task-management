@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
-    @PostMapping("create")
+    @PostMapping("register")
     public ResponseEntity<String> register(@Valid @RequestBody RegisterUserRequestDto registerUserRequestDto) {
         boolean auth = authenticationService.register(registerUserRequestDto);
         if(auth){

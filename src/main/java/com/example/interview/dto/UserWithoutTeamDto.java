@@ -1,22 +1,19 @@
 package com.example.interview.dto;
 
-import com.example.interview.entity.User;
+import com.example.interview.entity.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.Set;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamDto {
-
+public class UserWithoutTeamDto {
+    private Long id;
     private String name;
-    private Integer maxMembers;
-    private List<UserWithoutTeamDto> users;
-    private Integer members;
+    private Role role;
+    private String email;
+    private String phoneNumber;
 }

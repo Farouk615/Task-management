@@ -1,7 +1,11 @@
 package com.example.interview.mapper;
 
 import com.example.interview.dto.TeamDto;
+import com.example.interview.dto.UserWithoutTeamDto;
 import com.example.interview.entity.Team;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TeamMapper {
     public static TeamDto toDTO(Team team){
@@ -9,7 +13,7 @@ public class TeamMapper {
                 .builder()
                 .name(team.getName())
                 .maxMembers(team.getMaxMembers())
-                .users(team.getUsers())
+                .users(team.getUsers().stream().map(UserMapper::toDTO).collect(Collectors.toList()))
                 .members(team.getMembers())
                 .build();
     }

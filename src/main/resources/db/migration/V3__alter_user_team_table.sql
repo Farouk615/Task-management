@@ -1,1 +1,2 @@
-ALTER TABLE user_team ADD CONSTRAINT unique_user_team UNIQUE (user_id, team_id);
+ALTER table team
+ADD COLUMN max_members INT;

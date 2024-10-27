@@ -1,6 +1,5 @@
 package com.example.interview.service;
 
-import com.example.interview.config.filters.JwtService;
 import com.example.interview.dto.request.LoginRequestDto;
 import com.example.interview.dto.request.RegisterUserRequestDto;
 import com.example.interview.dto.response.LoginResponseDto;
@@ -22,12 +21,12 @@ public class AuthenticationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager ;
+    private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
 
     public Boolean register(RegisterUserRequestDto registerUserRequestDto) {
-        if(userRepository.findByEmail(registerUserRequestDto.getEmail()).isPresent()){
+        if (userRepository.findByEmail(registerUserRequestDto.getEmail()).isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "User Already exist");
         }
@@ -43,11 +42,11 @@ public class AuthenticationService {
         return true;
     }
 
-    public LoginResponseDto login(LoginRequestDto loginRequestDto){
+    public LoginResponseDto login(LoginRequestDto loginRequestDto) {
         Optional<User> userOptional = userRepository.findByEmail(loginRequestDto.getEmail());
         if (userOptional.isEmpty()) {
             throw new ResponseStatusException(
-                    HttpStatus.UNAUTHORIZED, "Bad credentials");
+                    HttpStatus.UNAUTHORIZED);
         }
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

@@ -42,7 +42,6 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @ManyToMany
-    @JsonIgnore
     @JoinTable(
             name = "user_team",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -50,7 +49,9 @@ public class User implements UserDetails {
     )
     private Set<Team> teams = new HashSet<>();
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "task_id", referencedColumnName = "id")
+    private Task task;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -80,5 +81,37 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

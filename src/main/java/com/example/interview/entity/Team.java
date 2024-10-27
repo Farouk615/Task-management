@@ -29,9 +29,11 @@ public class Team {
 
     @Getter
     @ManyToMany(mappedBy = "teams")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private Set<User> users = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     public int getMembers(){
         return users!=null ? users.size() : 0;
